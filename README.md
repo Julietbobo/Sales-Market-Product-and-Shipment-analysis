@@ -53,6 +53,9 @@ orders=orders[new_order]
 (The analysis was done using matplotlib using category bar charts, line charts, horizontal bar charts and a pie chart.).
 
  #### Profits and sales analysis
+ ![MONTHLYPS](https://github.com/user-attachments/assets/ccb23444-3fb1-45c0-817f-3450f76630dd)
+ ![YEARLY PS](https://github.com/user-attachments/assets/872023e2-2e21-4658-9911-20381e332a7c)
+
 - To perform the monthly profits and sales analysis I first extracted the months from the order date which I grouped in order to find the total profits and sales for each month.
 - The grouped data would return a series which I sorted based on the index(in this case the months would be the index since I used the pd.CategoricalIndex to turn it into an index)
 ```
@@ -64,8 +67,6 @@ monthsales.index=pd.CategoricalIndex(monthsales.index, categories=month_order, o
 monthsales=monthsales.sort_index()
 
 ```
-
- #### Market analysis
 - Below is a snippet of one of the codes used to plot the monthly sales and profit charts which is a combination of a bar and line chart
 ```
 month_order = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
@@ -87,9 +88,12 @@ lines2, labels2=ax2.get_legend_handles_labels()
 ax1.legend(lines1+lines2, labels1+labels2, loc="upper right")
 plt.show()
 ```
-
+ #### Market analysis
+![PS BY MKT](https://github.com/user-attachments/assets/c5518fc5-51c7-4e32-9826-b1dd943e1b8e)
 - I applied the same steps I used in the monthly for the yearly analysis of profits and sales.
 - For the market analysis I analysed orders by markets, orders by region and profits and sales by market
+ ![ORDERS BY MARKET](https://github.com/user-attachments/assets/cb3ba926-b3b8-441b-88c2-b047b0159bb3)
+ ![ORDERS BY REGION](https://github.com/user-attachments/assets/b73c7561-9a91-4c40-8248-ded17ff092ab)
 - Below is a snippet of how I found orders by market and plotted it. The main thing was grouping the markets and doing a count of orders per market
 ```
 mkt=orders.groupby('Customer Market')['Order ID'].count()
@@ -104,6 +108,7 @@ plt.show()
 
 ```
  #### Product analysis
+ ![TOPBOTTOM N](https://github.com/user-attachments/assets/ad125939-5f2b-4fa0-ae6b-4bb8b3dc9b80)
  - The product analysis was achived by grouping the product categories and finding the top 5 and bottom 5 products by profits and sales. I  used subplots to show the different categories and I thought it would be cleaner.
 
 ```
@@ -128,6 +133,8 @@ axs[0].tick_params(axis='x', rotation=360)
 
 ```
 #### Performance analysis
+![Capture](https://github.com/user-attachments/assets/4506a3e4-dd27-4644-83e5-03ed04ef54c7)
+
 - I created a new column called performance to know whether a shipment was on time or late. I achieved this by creating a function that checks whether the actual shipment day is less or equal to the expected shipment day. If it’s less I categorized it as “On Time” and if its greater I categorized it as “Late”. I used a pie chart to visualize this analysis.
 
 ```
