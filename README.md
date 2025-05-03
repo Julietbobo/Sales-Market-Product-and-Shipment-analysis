@@ -1,5 +1,5 @@
 ### DATA SOURCE AND LOADING
-- The file is an excel file with several sheets sourced [here](https://herdataproject.gumroad.com/l/supply_chain).
+- The file is an excel file with several sheets sourced from [here](https://herdataproject.gumroad.com/l/supply_chain).
 - I first worked with data from the orders_and_fulfillment sheet which I called orders
 
 ```
@@ -19,6 +19,30 @@ Sheet to create a new table called Fulfill. The data in the warehouse order fulf
                       expected shipment = (order date + days it takes for shipment to begin).
 3.	The actual shipment dates is already provided in the data which makes it easy in finding delays. 
 4.	I created a new column called performance to know whether a shipment was on time or late. I achieved this by creating a function that checks whether the actual shipment day is less or equal to the expected shipment day. If it’s less I categorized it as “On Time” and if its greater I categorized it as “Late”
+5.	I re-ordered the orders data frame to reflect the changes I had made
+```
+new_order=['Order ID',
+ 'Order Item ID',
+ 'Order_date',
+ 'Order Time',
+ 'Order Quantity',
+ 'Product Department',
+ 'Product Category',
+ 'Product Name',
+ 'Customer ID',
+ 'Customer Market',
+ 'Customer Region',
+ 'Customer Country',
+ 'Warehouse Country',
+ 'Shipment_date',
+ 'Shipment Mode',
+ 'Shipment Days - Scheduled',
+ 'Gross Sales',
+ 'Discount %',
+ 'Profit'
+          ]
+orders=orders[new_order]
+```
 
 ### DATA ANALYSIS
 - I categorized the analysis into;
