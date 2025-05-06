@@ -164,6 +164,9 @@ plt.pie(grouped, labels=labelling, colors=cols, explode=explodes, autopct='%1.0f
 plt.title('Performance by shipment')
 plt.show()
 ```
+- I also analysed how each market was performing based on its shipment schedules.
+
+![barh](https://github.com/user-attachments/assets/3cc7b3cc-372b-4123-97ae-58f28ca36968)
 ### Performance Analysis
 - I created a heatmap to analyse how products were ordered based on the market.
 
@@ -179,9 +182,6 @@ sb.heatmap(datas, annot=False, fmt='g', cmap=segm)
 ```
 ![heatmap](https://github.com/user-attachments/assets/4452add0-8d8c-4cf2-80ac-d9b3c52a5902)
 
-- I also analysed how each market was performing based on its shipment schedules.
-
-![barh](https://github.com/user-attachments/assets/3cc7b3cc-372b-4123-97ae-58f28ca36968)
 
 ### Findings
 1. July and August have the highest sales
@@ -191,5 +191,46 @@ sb.heatmap(datas, annot=False, fmt='g', cmap=segm)
 5. Cleats, men's footwear, women's apparel, indoor/outdoor and fishing are the top five ordered products
 6. 84% of the shipments are early and 16% are late
 7. There are product categories that have very minimal order in all markets, some are just ordered in one region minimally while others are well ordered in all most markets
+
+### Recommendations
+1. Increase Inventory for July and August
+
+ - Since these months have the highest sales, prepare by boosting inventory, logistics capacity, and marketing efforts ahead of time.
+
+2. Prioritize Marketing in Europe and LATAM
+
+ - Focus promotional campaigns, loyalty programs and personalized offers in Europe and LATAM to further grow an already strong customer base.
+
+3. Expand Top 5 Profitable Categories
+
+ - Increase the variety and stock of Cleats, Fishing, Cardio Equipment, Women’s Apparel, and Indoor/Outdoor Games to capitalize on high profit margins.
+
+4. Bundle High-Revenue Products for Cross-Selling
+
+ - Create product bundles (e.g., Fishing gear + Camping equipment) or offer discounts for combined purchases to increase average order value.
+
+5. Leverage High-Order Products for Promotion
+
+ - Promote Cleats, Men’s and Women’s Footwear, and Indoor/Outdoor Games through ads or featured sections on e-commerce platforms, as they are frequently ordered.
+
+6. Analyze and Optimize Late Shipments
+
+ - Investigate reasons behind the late shipments and optimize the supply chain, especially in regions where delays are common.
+
+7. Rationalize or Reposition Poorly Performing Categories
+
+- Either phase out products with minimal orders or reposition them (through niche marketing or bundling) in regions where demand might grow.
+
+Tailor Product Strategy by Region
+
+8. For products that perform well only in specific markets, focus efforts regionally instead of company-wide. Localized product strategies can boost efficiency.
+
+ - Forecast Sales and Demand by Product Category
+
+9. Use historical data to improve demand forecasting and ensure inventory levels align with sales trends across months and regions.
+
+10. Continuously Monitor Category Performance
+
+11. Regularly review category performance to quickly identify rising trends or declining interest, allowing for agile business decisions.
 
 
