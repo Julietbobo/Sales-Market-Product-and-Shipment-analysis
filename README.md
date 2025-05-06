@@ -50,11 +50,11 @@ orders=orders[new_order]
    - Market Analysis
    -	Product Analysis
    -	Performance Analysis
-(The analysis was done using matplotlib using category bar charts, line charts, horizontal bar charts and a pie chart.).
+(The visualization was done using matplotlib and seaborn using category bar charts, line charts, horizontal bar charts, heatmap and a pie chart.).
 
  #### Profits and sales analysis
- ![MONTHLYPS](https://github.com/user-attachments/assets/ccb23444-3fb1-45c0-817f-3450f76630dd)
- ![YEARLY PS](https://github.com/user-attachments/assets/872023e2-2e21-4658-9911-20381e332a7c)
+![ps monthly](https://github.com/user-attachments/assets/cf2a563f-1546-4174-8aa4-375114a608f1)
+![ps year](https://github.com/user-attachments/assets/63f9f481-3f23-4ea5-b1d6-0aa81c98cc36)
 
 - To perform the monthly profits and sales analysis I first extracted the months from the order date which I grouped in order to find the total profits and sales for each month.
 - The grouped data would return a series which I sorted based on the index(in this case the months would be the index since I used the pd.CategoricalIndex to turn it into an index)
@@ -89,11 +89,12 @@ ax1.legend(lines1+lines2, labels1+labels2, loc="upper right")
 plt.show()
 ```
  #### Market analysis
-![PS BY MKT](https://github.com/user-attachments/assets/c5518fc5-51c7-4e32-9826-b1dd943e1b8e)
+![ps by mkt](https://github.com/user-attachments/assets/a1ccf0ce-75e8-4cbe-a1d3-bc20839a00a4)
 - I applied the same steps I used in the monthly for the yearly analysis of profits and sales.
 - For the market analysis I analysed orders by markets, orders by region and profits and sales by market
- ![ORDERS BY MARKET](https://github.com/user-attachments/assets/cb3ba926-b3b8-441b-88c2-b047b0159bb3)
- ![ORDERS BY REGION](https://github.com/user-attachments/assets/b73c7561-9a91-4c40-8248-ded17ff092ab)
+![orders by reg](https://github.com/user-attachments/assets/b9c20861-97f7-4d5d-bccd-715b2bfe2584)
+![orders by mkt](https://github.com/user-attachments/assets/f3f328cd-56cb-4025-aee3-2ff46938be2d)
+
 - Below is a snippet of how I found orders by market and plotted it. The main thing was grouping the markets and doing a count of orders per market
 ```
 mkt=orders.groupby('Customer Market')['Order ID'].count()
@@ -132,8 +133,8 @@ axs[0].set_xlabel('')
 axs[0].tick_params(axis='x', rotation=360)
 
 ```
-#### Performance analysis
-![Capture](https://github.com/user-attachments/assets/4506a3e4-dd27-4644-83e5-03ed04ef54c7)
+#### Shipment analysis
+![pie chart](https://github.com/user-attachments/assets/9dbf14dc-09cd-4ad5-b1cf-bece1c304bfb)
 
 - I created a new column called performance to know whether a shipment was on time or late. I achieved this by creating a function that checks whether the actual shipment day is less or equal to the expected shipment day. If it’s less I categorized it as “On Time” and if its greater I categorized it as “Late”. I used a pie chart to visualize this analysis.
 
@@ -163,4 +164,32 @@ plt.pie(grouped, labels=labelling, colors=cols, explode=explodes, autopct='%1.0f
 plt.title('Performance by shipment')
 plt.show()
 ```
+### Performance Analysis
+- I created a heatmap to analyse how products were ordered based on the market.
+
+```
+  grouped=orders.groupby(['Customer Market','Product Category' ])['Order ID'].count().reset_index()
+datas=grouped.pivot(index='Customer Market', columns='Product Category', values='Order ID')
+
+mycols=['#bd291e', '#f0d28d', '#a4f08d']
+segm = LinearSegmentedColormap.from_list('mycmap', mycols)
+plt.figure(figsize=(18,8))
+sb.heatmap(datas, annot=False, fmt='g', cmap=segm)
+
+```
+![heatmap](https://github.com/user-attachments/assets/4452add0-8d8c-4cf2-80ac-d9b3c52a5902)
+
+- I also analysed how each market was performing based on its shipment schedules.
+
+![barh](https://github.com/user-attachments/assets/3cc7b3cc-372b-4123-97ae-58f28ca36968)
+
+### Findings
+1. July and August have the highest sales
+2. Europe and LATAM has the largest customer base and therefore the highest profits and sales
+3. Cleats, fishing, cardio equipment, women's apparel and indoor/outdoor games are the top 5 profitable product categories
+4. Fishing, Cleats, Camping and outdoor, cardio equipment and women's apparel have the highest revenue
+5. Cleats, men's footwear, women's apparel, indoor/outdoor and fishing are the top five ordered products
+6. 84% of the shipments are early and 16% are late
+7. There are product categories that have very minimal order in all markets, some are just ordered in one region minimally while others are well ordered in all most markets
+
 
