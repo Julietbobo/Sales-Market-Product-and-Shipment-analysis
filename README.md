@@ -1,3 +1,10 @@
+
+1. [DATA SOURCE AND LOADING](#data-source-and-loading)
+2. [DATA CLEANING](#data-cleaning)
+3. [DATA WRANGLING](#data-wrangling)
+4. [DATA ANALYSIS](#data-analysis)
+5. [FINDINGS](#findings)
+6. [RECOMMENDATIONS](#recommendations)
 ### DATA SOURCE AND LOADING
 - The file is an excel file with several sheets sourced from [here](https://herdataproject.gumroad.com/l/supply_chain).
 - I first worked with data from the orders_and_fulfillment sheet which I called orders
